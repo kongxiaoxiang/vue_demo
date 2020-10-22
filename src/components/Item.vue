@@ -4,7 +4,7 @@
       <input type="checkbox" v-model="todo.complete"/>
       <span>{{todo.title}}</span>
     </label>
-    <button class="btn btn-danger" style="display: none" v-show="isShow">删除</button>
+    <button class="btn btn-danger" style="display: none" v-show="isShow" @click="del">删除</button>
   </li>
 </template>
 
@@ -17,7 +17,9 @@
       }
     },
     props:{
-      todo:Object
+      todo:Object,
+      deleteItem:Function,
+      index:Number
     },
     methods:{
       handle(isEnter){
@@ -27,6 +29,12 @@
         }else{
           this.bgColor = 'white',
           this.isShow = false
+        }
+      },
+      del(){
+        const {todo,deleteItem,index} = this
+        if(window.confirm(`are you sure splice ${todo.title}`)){
+          deleteItem(index)
         }
       }
     }

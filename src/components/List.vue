@@ -1,6 +1,7 @@
 <template>
   <ul class="todo-main">
-    <Item v-for="(todo,index) in todos" :key='index' :todo='todo'/>
+    <Item v-for="(todo,index) in todos" :key='index' :todo='todo' 
+    :deleteItem='deleteItem' :index='index'/>
   </ul>
 </template>
 
@@ -8,7 +9,8 @@
   import Item from './Item'
   export default {
     props:{
-      todos:Array
+      todos:Array,
+      deleteItem:Function
     },
     components:{
       Item
