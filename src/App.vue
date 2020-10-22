@@ -12,7 +12,6 @@
   import Header from './components/Header'
   import List from './components/List'
   import Footer from './components/Footer'
-import func from '../vue-temp/vue-editor-bridge'
   export default {
     data(){
       return { //读
