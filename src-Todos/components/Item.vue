@@ -9,7 +9,6 @@
 </template>
 
 <script>
-  import PubSub from 'pubsub-js'
   export default {
     data(){
       return {
@@ -33,9 +32,9 @@
         }
       },
       del(){
-        const {todo,index} = this
+        const {todo,deleteItem,index} = this
         if(window.confirm(`are you sure splice ${todo.title}`)){
-          PubSub.publish('deleteItem',index)
+          deleteItem(index)
         }
       }
     }

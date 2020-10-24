@@ -1,16 +1,14 @@
 <template>
   <div class="todo-container">
     <div class="todo-wrap">
-    <!-- <Header @addItem='addItem'/> -->
-    <Header ref='header'/>
-    <List :todos='todos'/>
+    <Header :addItem='addItem'/>
+    <List :todos='todos' :deleteItem='deleteItem'/>
     <Footer :deleteComTask='deleteComTask' :todos='todos' :checkTodo='checkTodo'/>
     </div>
   </div>
 </template>
 
 <script>
-  import PubSub from 'pubsub-js'
   import Header from './components/Header'
   import List from './components/List'
   import Footer from './components/Footer'
@@ -24,12 +22,6 @@
       Header,
       List,
       Footer
-    },
-    mounted(){ //执行异步代码
-      this.$refs.header.$on('addItem',this.addItem)
-      PubSub.subscribe('deleteItem',(msg,index) =>{
-        this.deleteItem(index)
-      })
     },
     watch:{
       todos:{  

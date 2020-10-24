@@ -11,9 +11,12 @@
         title:''
       }
     },
+    props:{
+      addItem:Function
+    },
     methods:{
       add(){
-        const {title} = this
+        const {title,addItem} = this
         if(!title.trim()){
           alert('脑残选手')
           return
@@ -22,8 +25,7 @@
           title,
           complete:false
         }
-        //触发自定义事件
-        this.$emit('addItem',todo)
+        addItem(todo)
         this.title = ''
       }
     }
