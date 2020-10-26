@@ -28,12 +28,11 @@ import PubSub from "pubsub-js";
 import Header from "./components/Header";
 import List from "./components/List";
 import Footer from "./components/Footer";
-import storageUtil from './util/storageUtil'
 export default {
   data() {
     return {
       //读
-      todos: storageUtil.readTodos()
+      todos: JSON.parse(window.localStorage.getItem("todos_key") || "[]"),
     };
   },
   components: {
@@ -64,11 +63,10 @@ export default {
   watch: {
     todos: {
       deep: true, //深度监视
-      // handler: function (value) {
-      //   //存
-      //   storageUtil.saveTodos(value)
-      // },
-      handler:storageUtil.saveTodos
+      handler: function (value) {
+        //存
+        window.localStorage.setItem("todos_key", JSON.stringify(value));
+      },
     },
   },
   methods: {
