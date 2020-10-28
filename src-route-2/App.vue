@@ -21,9 +21,7 @@
       <div class="col-xs-6">
         <div class="panel">
           <div class="panel-body">
-            <keep-alive>
-              <router-view msg='abc'></router-view>
-            </keep-alive>
+            <router-view></router-view>
           </div>
         </div>
       </div>
